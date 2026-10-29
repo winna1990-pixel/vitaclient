@@ -97,7 +97,7 @@ h2::after{content:"";display:block;width:56px;height:3px;margin-top:16px;border-
 /* SCREENS */
 .shots{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
 .shot{margin:0}
-.shot:hover .shot__img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:var(--r);border:1px solid var(--line);background:var(--glass);
+.shot__img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:var(--r);border:1px solid var(--line);background:var(--glass);
   transition:transform .35s var(--ease),box-shadow .35s,border-color .35s}
 .shot:hover .shot__img{transform:scale(1.015);border-color:color-mix(in srgb,var(--acc) 40%,transparent);box-shadow:0 20px 60px -24px var(--acc-glow)}
 .shot figcaption{margin-top:10px;color:var(--mut);font-size:14px}
