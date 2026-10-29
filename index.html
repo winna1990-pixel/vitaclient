@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<script>document.documentElement.classList.add("js")</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#050507">
+<title data-cname-title>VitaClient: визуальный клиент для Minecraft</title>
+<meta name="description" content="Визуальный клиент для Minecraft 1.16.5 на Fabric: HUD, зум, прицел, анимации. Только визуал, без чит-функций.">
+<link rel="icon" href="assets/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" href="assets/logo-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/logo-128.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#features">К содержимому</a>
+<!-- НАЗВАНИЕ: меняется в одном месте, константа CLIENT_NAME в скрипте внизу страницы. -->
+<header class="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="#top"><img src="assets/logo-32.png" srcset="assets/logo-32.png 1x, assets/logo-128.png 2x" alt="" width="32" height="32"><span data-cname>VitaClient</span></a>
+    <nav class="nav__links" aria-label="Разделы">
+      <a href="#features">Функции</a>
+      <a href="#screens">Скриншоты</a>
+      <a href="#server">Сервер</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero__in">
+      <div class="hero__text">
+        <p class="tag">Fabric · 1.16.5</p>
+        <h1 data-cname>VitaClient</h1>
+        <p class="lead">Визуальный клиент для Minecraft. Чистый HUD, зум, свой прицел и плавные анимации. Только визуал, без чит-функций.</p>
+        <div class="hero__cta">
+          <button class="btn btn--primary" type="button" disabled aria-disabled="true" title="Скоро">Купить на FunPay <small>скоро</small></button>
+          <a class="btn btn--ghost" href="#features">Что внутри</a>
+        </div>
+        <p class="note">100 ₽, ключ активации после покупки. Меню открывается на <kbd>Right Shift</kbd>.</p>
+      </div>
+      <div class="hero__logo">
+        <!-- Логотип V2 от 2d (/workspace/promo/client/logo_v2_emblem_512.png) -->
+        <img src="assets/logo.png" alt="Логотип клиента" width="280" height="280">
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="section">
+    <div class="wrap">
+      <h2>Функции</h2>
+      <p class="sub">Клиент меняет только картинку: игровую механику он не трогает.</p>
+      <div class="grid">
+        <article class="card"><span class="ico" aria-hidden="true">⌨</span><h3>Меню на Right Shift</h3><p>Все модули и настройки в одном окне: включай, двигай, настраивай.</p></article>
+        <article class="card"><span class="ico" aria-hidden="true">▦</span><h3>HUD</h3><p>FPS, координаты, кейстроки с CPS, броня с прочностью. Расположение настраивается в редакторе HUD из меню.</p></article>
+        <article class="card"><span class="ico" aria-hidden="true">✛</span><h3>Прицел</h3><p>Свой прицел: форма, размер, цвет и обводка.</p></article>
+        <article class="card"><span class="ico" aria-hidden="true">✦</span><h3>Частицы</h3><p>Настройка частиц ударов и эффектов: больше, меньше или свой цвет.</p></article>
+        <article class="card"><span class="ico" aria-hidden="true">◎</span><h3>Таргет-худ</h3><p>Ник, здоровье и броня цели, которую ты бьёшь или на которую смотришь.</p></article>
+        <article class="card"><span class="ico" aria-hidden="true">↻</span><h3>Анимации</h3><p>Плавные анимации руки, взмаха и интерфейса.</p></article>
+        <article class="card"><span class="ico" aria-hidden="true">⌕</span><h3>Зум</h3><p>Приближение на клавишу, как подзорная труба. Кратность и плавность настраиваются в меню.</p></article>
+        <article class="card"><span class="ico" aria-hidden="true">🔑</span><h3>Активация по ключу</h3><p>После покупки получаешь ключ и вводишь его в клиенте.</p></article>
+        <article class="card"><span class="ico" aria-hidden="true">☀</span><h3>Шейдеры через Iris <span class="badge">планируется</span></h3><p>Совместимость с шейдерами через Iris.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="screens" class="section section--alt">
+    <div class="wrap">
+      <h2>Скриншоты</h2>
+      <p class="sub">Пока это макеты меню. Скрины из игры добавим позже.</p>
+      <div class="shots">
+        <figure class="shot"><img class="shot__img" src="assets/menu-hud.jpg" alt="Макет меню: раздел «HUD»" width="1280" height="720" loading="lazy" decoding="async"><figcaption>HUD. Макет меню, финальный вид может отличаться</figcaption></figure>
+        <figure class="shot"><img class="shot__img" src="assets/menu-visual.jpg" alt="Макет меню: раздел «Визуал»" width="1280" height="720" loading="lazy" decoding="async"><figcaption>Визуал. Макет меню, финальный вид может отличаться</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="server" class="section">
+    <div class="wrap wrap--narrow">
+      <h2>Наш сервер</h2>
+      <p class="sub">Скопируй адрес и добавь его в список серверов в Minecraft.</p>
+      <div class="ipbox">
+        <code class="ipbox__ip" id="server-ip">45.93.200.27:25566</code>
+        <button class="btn btn--ghost ipbox__btn" type="button" id="copy-ip" data-ip="45.93.200.27:25566">Скопировать</button>
+      </div>
+      <p class="ipbox__status" id="copy-status" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section id="faq" class="section">
+    <div class="wrap wrap--narrow">
+      <h2>FAQ</h2>
+      <details class="faq" open>
+        <summary>Это безопасно?</summary>
+        <p>Клиент меняет только картинку у тебя на экране. Это мод для Fabric: он не просит логин и пароль от аккаунта и ничего не меняет в твоём Minecraft, кроме своих настроек.</p>
+      </details>
+      <details class="faq">
+        <summary>Как установить?</summary>
+        <p>VitaClient — мод для Fabric. Поставь Minecraft 1.16.5 с Fabric Loader, положи файл VitaClient в папку <code>mods</code> и запусти игру. Подробная инструкция придёт вместе с ключом.</p>
+        <p>Свой лаунчер, который всё поставит сам, сделаем позже.</p>
+      </details>
+      <details class="faq">
+        <summary>Нужна ли лицензия Minecraft?</summary>
+        <p>Да, нужен свой Minecraft: Java Edition.</p>
+      </details>
+      <details class="faq">
+        <summary>Какие версии поддерживаются?</summary>
+        <p>Minecraft 1.16.5 на Fabric. Новые версии добавим позже.</p>
+      </details>
+      <details class="faq">
+        <summary>Тут есть читы?</summary>
+        <p>Нет. Только визуал, без чит-функций: ни ESP, ни X-ray, ни хитбоксов, ни автокликера, ни киллауры.</p>
+      </details>
+      <details class="faq">
+        <summary>Он платный?</summary>
+        <p>Да, 100 ₽, покупка через FunPay, ключ активации.</p>
+      </details>
+      <details class="faq">
+        <summary>Как открыть меню?</summary>
+        <p>Нажми <kbd>Right Shift</kbd> в игре.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <span>© 2026 vitaa_games</span>
+    <span>Не связан с Mojang и Microsoft. Minecraft — товарный знак Mojang AB.</span>
+  </div>
+</footer>
+<script>
+  // Рабочее название клиента: меняется только здесь.
+  const CLIENT_NAME = "VitaClient";
+  document.querySelectorAll("[data-cname]").forEach(e => e.textContent = CLIENT_NAME);
+  document.title = CLIENT_NAME + ": визуальный клиент для Minecraft";
+  const logo = document.querySelector(".hero__logo img");
+  if (logo) logo.alt = "Логотип " + CLIENT_NAME;
+  // Плавное появление блоков при прокрутке.
+  // Копирование IP сервера: Clipboard API, запасной путь через выделение текста.
+  const copyBtn = document.getElementById("copy-ip");
+  const copyStatus = document.getElementById("copy-status");
+  if (copyBtn) {
+    let resetTimer = 0;
+    const done = ok => {
+      copyBtn.textContent = ok ? "Скопировано" : "Скопировать";
+      if (!ok) { // выделяем адрес, чтобы осталось только нажать Ctrl+C
+        const ipEl = document.getElementById("server-ip");
+        const sel = window.getSelection && window.getSelection();
+        if (ipEl && sel) { const r = document.createRange(); r.selectNodeContents(ipEl); sel.removeAllRanges(); sel.addRange(r); }
+      }
+      if (copyStatus) copyStatus.textContent = ok ? "IP скопирован" : "Не получилось скопировать, выдели адрес и нажми Ctrl+C";
+      clearTimeout(resetTimer);
+      resetTimer = setTimeout(() => { copyBtn.textContent = "Скопировать"; if (copyStatus) copyStatus.textContent = ""; }, 2000);
+    };
+    const fallback = text => {
+      const ta = document.createElement("textarea");
+      ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      let ok = false; try { ok = document.execCommand("copy"); } catch (e) {}
+      ta.remove(); return ok;
+    };
+    copyBtn.addEventListener("click", () => {
+      const ip = copyBtn.dataset.ip;
+      if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(ip).then(() => done(true), () => done(fallback(ip)));
+      else done(fallback(ip));
+    });
+  }
+  // Первый экран (hero) не прячем: он виден сразу, у него своя CSS-анимация.
+  const vh = window.innerHeight || document.documentElement.clientHeight;
+  const els = [...document.querySelectorAll(".section h2,.section .sub,.card,.shot,.ipbox,.faq")]
+    .filter(e => e.getBoundingClientRect().top >= vh); // что уже в окне при загрузке, не трогаем
+  els.forEach((e,i) => { e.classList.add("reveal"); e.style.transitionDelay = (i % 4) * 70 + "ms"; });
+  const showAll = () => els.forEach(e => e.classList.add("in"));
+  if ("IntersectionObserver" in window) {
+    // Показываем и то, что уже выше окна (переход по якорю), чтобы при прокрутке вверх не было пустоты.
+    const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting || x.boundingClientRect.bottom < 0) { x.target.classList.add("in"); io.unobserve(x.target); } }), {threshold: .12});
+    els.forEach(e => io.observe(e));
+    // При резком прыжке вниз (якорь, End) наблюдатель может пропустить блоки, которые проскочили окно целиком:
+    // после прокрутки досылаем «in» всему, что уже выше окна.
+    let tick = false;
+    window.addEventListener("scroll", () => {
+      if (tick) return; tick = true;
+      requestAnimationFrame(() => {
+        tick = false;
+        els.forEach(e => { if (!e.classList.contains("in") && e.getBoundingClientRect().bottom < 0) { e.classList.add("in"); io.unobserve(e); } });
+      });
+    }, {passive: true});
+    // Подстраховка: при печати страница должна быть видна целиком.
+    window.addEventListener("beforeprint", showAll);
+  } else showAll();
+</script>
+</body>
+</html>

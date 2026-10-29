@@ -1,0 +1,204 @@
+/* VitaClient — тёмная тема. Акцент меняется ОДНОЙ переменной --acc (цвет лого V2); --acc2 — второй цвет градиента лого. */
+:root{
+  --acc:#ff2bd6; --acc2:#8a3cff;
+  --acc-soft:color-mix(in srgb,var(--acc) 18%,transparent);
+  --acc-glow:color-mix(in srgb,var(--acc) 45%,transparent);
+  --bg:#050507; --bg2:#09090d; --glass:rgba(255,255,255,.035); --glass2:rgba(255,255,255,.06);
+  --line:rgba(255,255,255,.08); --txt:#f4f4f7; --mut:#9a9aa8;
+  --r:18px; --font:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --mono:ui-monospace,"Cascadia Mono",Consolas,monospace;
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+/* Запасные цвета для браузеров без color-mix (старые Safari/Chrome < 111). */
+@supports not (color:color-mix(in srgb,red 50%,blue)){
+  :root{--acc-soft:rgba(255,43,214,.18);--acc-glow:rgba(255,43,214,.45)}
+  h1{color:#fff;background:none;filter:none}
+}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .nav{background:rgba(5,5,7,.95)}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px;background:var(--bg)}
+body{margin:0;color:var(--txt);font:16px/1.6 var(--font);background:
+  radial-gradient(900px 600px at 15% -10%,color-mix(in srgb,var(--acc) 14%,transparent),transparent 60%),
+  radial-gradient(700px 500px at 100% 30%,color-mix(in srgb,var(--acc2) 10%,transparent),transparent 60%),
+  var(--bg);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.35;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 0%,#000 10%,transparent 70%)}
+main,header,footer{position:relative;z-index:1}
+img{max-width:100%;display:block}
+a{color:var(--acc)}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+.wrap--narrow{max-width:800px}
+
+.skip{position:absolute;left:-9999px;top:8px;z-index:50;background:var(--acc);color:#fff;padding:8px 14px;border-radius:10px}
+.skip:focus{left:8px}
+a:focus-visible,.btn:focus-visible,.faq summary:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:10px}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:20;background:rgba(5,5,7,.6);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid var(--line)}
+.nav__in{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;gap:10px;align-items:center;color:var(--txt);text-decoration:none;font-weight:800;letter-spacing:.02em}
+.brand img{border-radius:8px}
+.nav__links{display:flex;gap:28px}
+.nav__links a{position:relative;color:var(--mut);text-decoration:none;font-size:15px;transition:color .25s}
+.nav__links a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--acc);transform:scaleX(0);transition:transform .3s var(--ease);box-shadow:0 0 8px var(--acc)}
+.nav__links a:hover{color:var(--txt)}
+.nav__links a:hover::after{transform:scaleX(1)}
+
+/* HERO */
+.hero{padding:110px 0 100px;position:relative}
+.hero__in{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:center}
+.tag{display:inline-flex;align-items:center;gap:8px;margin:0 0 22px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--glass);color:var(--mut);font:13px var(--mono)}
+.tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--acc);box-shadow:0 0 10px var(--acc);animation:pulse 2.4s ease-in-out infinite}
+h1{margin:0 0 20px;font:900 clamp(48px,9vw,112px)/.95 var(--font);letter-spacing:-.045em;
+  background:linear-gradient(100deg,#fff 20%,color-mix(in srgb,#fff 35%,var(--acc)) 60%,color-mix(in srgb,#fff 30%,var(--acc2)) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 30px color-mix(in srgb,var(--acc) 25%,transparent))}
+.lead{margin:0 0 34px;color:var(--mut);font-size:clamp(17px,2vw,20px);max-width:560px}
+.hero__cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero__logo{display:flex;justify-content:center;position:relative}
+.hero__logo::before{content:"";position:absolute;width:80%;aspect-ratio:1;border-radius:50%;background:var(--acc-glow);filter:blur(80px);opacity:.55;animation:breathe 6s ease-in-out infinite}
+.hero__logo img{position:relative;width:min(280px,70vw);height:auto;animation:float 7s ease-in-out infinite}
+.note{margin:22px 0 0;color:var(--mut);font-size:14px}
+kbd{font:12px var(--mono);padding:2px 8px;border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;background:var(--glass2);color:var(--txt)}
+
+/* BUTTONS */
+.btn{position:relative;display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:14px;font:700 16px var(--font);text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s,border-color .25s,background .25s}
+.btn--primary{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;box-shadow:0 0 0 1px color-mix(in srgb,var(--acc) 50%,transparent),0 10px 40px -10px var(--acc-glow)}
+.btn--primary:not([disabled]):hover{transform:translateY(-2px);box-shadow:0 0 0 1px var(--acc),0 14px 50px -8px var(--acc)}
+.btn[disabled]{opacity:.6;cursor:not-allowed}
+.btn small{font-weight:600;font-size:11px;padding:2px 7px;border-radius:999px;background:rgba(0,0,0,.3);letter-spacing:.04em;text-transform:uppercase}
+.btn--ghost{border-color:var(--line);color:var(--txt);background:var(--glass);backdrop-filter:blur(8px)}
+.btn--ghost:hover{border-color:color-mix(in srgb,var(--acc) 60%,transparent);transform:translateY(-2px);box-shadow:0 0 24px -6px var(--acc-glow)}
+
+/* SECTIONS */
+.section{padding:100px 0;position:relative}
+.section--alt{background:linear-gradient(180deg,transparent,var(--bg2) 20%,var(--bg2) 80%,transparent)}
+h2{margin:0 0 10px;font:900 clamp(32px,5vw,52px)/1.05 var(--font);letter-spacing:-.03em}
+h2::after{content:"";display:block;width:56px;height:3px;margin-top:16px;border-radius:3px;background:linear-gradient(90deg,var(--acc),var(--acc2));box-shadow:0 0 14px var(--acc)}
+.sub{margin:18px 0 40px;color:var(--mut);max-width:620px}
+
+/* CARDS (glass) */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.card{position:relative;overflow:hidden;background:linear-gradient(180deg,var(--glass2),var(--glass));border:1px solid var(--line);border-radius:var(--r);padding:26px;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:transform .35s var(--ease),border-color .35s,box-shadow .35s}
+.card::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;pointer-events:none;
+  background:linear-gradient(135deg,color-mix(in srgb,var(--acc) 70%,transparent),transparent 40%,transparent 60%,color-mix(in srgb,var(--acc) 40%,transparent));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .35s}
+.card:hover{transform:translateY(-4px);border-color:transparent;box-shadow:0 20px 60px -20px var(--acc-glow)}
+.card:hover::before{opacity:1}
+.card h3{margin:16px 0 8px;font-size:19px;letter-spacing:-.01em}
+.card p{margin:0;color:var(--mut);font-size:15px}
+.ico{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:12px;background:var(--acc-soft);color:var(--acc);font-size:22px;
+  box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--acc) 35%,transparent),0 0 24px -6px var(--acc-glow)}
+.badge{display:inline-block;margin-left:6px;padding:2px 9px;border-radius:999px;background:var(--acc-soft);color:var(--acc);font:700 10px var(--mono);letter-spacing:.06em;text-transform:uppercase;vertical-align:middle;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--acc) 35%,transparent)}
+
+/* SCREENS */
+.shots{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.shot{margin:0}
+.shot:hover .shot__img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:var(--r);border:1px solid var(--line);background:var(--glass);
+  transition:transform .35s var(--ease),box-shadow .35s,border-color .35s}
+.shot:hover .shot__img{transform:scale(1.015);border-color:color-mix(in srgb,var(--acc) 40%,transparent);box-shadow:0 20px 60px -24px var(--acc-glow)}
+.shot figcaption{margin-top:10px;color:var(--mut);font-size:14px}
+
+/* FAQ */
+.faq{background:var(--glass);border:1px solid var(--line);border-radius:16px;margin-bottom:12px;padding:0 22px;transition:border-color .3s,background .3s}
+.faq[open]{border-color:color-mix(in srgb,var(--acc) 35%,transparent);background:var(--glass2)}
+.faq summary{cursor:pointer;padding:20px 32px 20px 0;font-weight:700;list-style:none;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:4px;top:50%;width:10px;height:10px;border-right:2px solid var(--acc);border-bottom:2px solid var(--acc);transform:translateY(-70%) rotate(45deg);transition:transform .3s var(--ease)}
+.faq[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+.faq p{margin:0 0 18px;color:var(--mut)}
+
+.foot{padding:36px 0;color:var(--mut);font-size:13px;border-top:1px solid var(--line)}
+.foot__in{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* REVEAL (включается скриптом; без JS всё видно) */
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js .reveal.in{opacity:1;transform:none}
+/* Первый экран: появляется сам, без JS-наблюдателя. fill-mode backwards: после анимации остаётся обычный видимый стиль. */
+@keyframes heroIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.hero__text{animation:heroIn .7s var(--ease) backwards}
+.hero__logo{animation:heroIn .7s var(--ease) .12s backwards}
+
+@keyframes pulse{50%{opacity:.35}}
+@keyframes float{50%{transform:translateY(-12px)}}
+@keyframes breathe{50%{opacity:.85;transform:scale(1.08)}}
+
+@media (max-width:860px){
+  .hero{padding:64px 0 70px}
+  .hero__in{grid-template-columns:1fr;text-align:center}
+  .hero__logo{order:-1}
+  .lead{margin-inline:auto}
+  .hero__cta{justify-content:center}
+  .section{padding:72px 0}
+  h2::after{margin-inline:0}
+}
+@media (max-width:560px){
+  .shots{grid-template-columns:1fr}
+  .nav__links{gap:16px}
+  .nav__links a{font-size:14px}
+  .brand span{display:none}
+  .wrap{padding:0 18px}
+}
+@media (max-width:360px){.btn{padding:13px 18px;font-size:15px}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .reveal{opacity:1;transform:none}
+}
+
+/* ===== АНИМИРОВАННЫЕ КНОПКИ ===== */
+@property --ang{syntax:"<angle>";inherits:false;initial-value:0deg}
+.btn{isolation:isolate;overflow:hidden;will-change:transform}
+/* бегущий неоновый край */
+.btn::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;z-index:-1;pointer-events:none;
+  background:conic-gradient(from var(--ang),transparent 0 55%,var(--acc2) 65%,var(--acc) 72%,#fff 75%,var(--acc) 80%,transparent 95%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;
+  animation:spin 3.2s linear infinite;opacity:.9}
+.btn--ghost::before{opacity:0;transition:opacity .3s}
+.btn--ghost:hover::before,.btn--ghost:focus-visible::before{opacity:1}
+/* блик, пробегающий по кнопке */
+.btn::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;z-index:1;pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);
+  animation:shine 4.5s var(--ease) infinite}
+.btn--ghost::after{animation:none;opacity:0}
+.btn--ghost:hover::after{opacity:1;animation:shine 1.1s var(--ease) 1}
+/* подъём, свечение, отдача при нажатии */
+.btn:not([disabled]):hover{transform:translateY(-3px) scale(1.02)}
+.btn:not([disabled]):active{transform:translateY(1px) scale(.96);transition-duration:.08s}
+/* неактивная FunPay «дышит» */
+.btn--primary[disabled]{opacity:.78;animation:btnBreathe 3s ease-in-out infinite}
+.btn--primary[disabled]:active{transform:scale(.98)}
+/* меню */
+.nav__links a{display:inline-block;transition:color .25s,transform .25s var(--ease),text-shadow .25s}
+.nav__links a:hover{transform:translateY(-2px);text-shadow:0 0 12px var(--acc-glow)}
+.nav__links a:active{transform:translateY(0) scale(.94)}
+.brand{transition:transform .25s var(--ease)}
+.brand:hover{transform:translateY(-1px)}
+.brand:active{transform:scale(.96)}
+/* FAQ */
+.faq{transition:border-color .3s,background .3s,transform .3s var(--ease),box-shadow .3s}
+.faq:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--acc) 45%,transparent);box-shadow:0 12px 40px -20px var(--acc-glow)}
+.faq summary{transition:color .25s,padding-left .25s var(--ease)}
+.faq summary:hover{color:#fff;padding-left:6px}
+.faq summary:active{transform:scale(.99)}
+
+@keyframes spin{to{--ang:360deg}}
+@keyframes shine{0%{left:-60%}35%,100%{left:130%}}
+@keyframes btnBreathe{0%,100%{box-shadow:0 0 0 1px color-mix(in srgb,var(--acc) 40%,transparent),0 8px 30px -12px var(--acc-glow)}
+  50%{box-shadow:0 0 0 1px var(--acc),0 10px 46px -6px var(--acc)}}
+@media (prefers-reduced-motion:reduce){
+  .btn::before{animation:none;background:linear-gradient(var(--acc),var(--acc));opacity:.6}
+  .btn::after{display:none}
+  .btn:hover,.btn:active,.nav__links a:hover,.faq:hover,.shot:hover .shot__img{transform:none!important}
+}
+
+/* ===== Наш сервер ===== */
+.ipbox{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:18px 18px 18px 24px;border:1px solid var(--line);border-radius:var(--r);background:var(--glass);backdrop-filter:blur(10px)}
+.ipbox__ip{font:700 clamp(18px,4.2vw,26px) var(--mono);color:var(--txt);letter-spacing:.02em;user-select:all;overflow-wrap:anywhere}
+.ipbox__btn{flex:none}
+.ipbox__status{min-height:1.4em;margin:10px 0 0;color:var(--mut);font-size:14px}
+@media (max-width:560px){.ipbox{padding:16px}.ipbox__btn{width:100%;justify-content:center}}
+.faq p code{font:13px var(--mono);padding:1px 6px;border-radius:6px;background:var(--glass2);color:var(--txt)}
