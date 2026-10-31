@@ -204,3 +204,7 @@ h2::after{content:"";display:block;width:56px;height:3px;margin-top:16px;border-
 .faq p code{font:13px var(--mono);padding:1px 6px;border-radius:6px;background:var(--glass2);color:var(--txt)}
 
 .price{font-size:1.6rem;font-weight:800;color:#22E6FF;margin:.2rem 0 .4rem}
+/* Тарифы: кнопки внизу карточек, в одну линию */
+#price .card{display:flex;flex-direction:column}
+#price .card p:not(.price){margin-bottom:22px}
+#price .card .btn{margin-top:auto;width:100%;justify-content:center;text-align:center}
